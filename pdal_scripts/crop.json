@@ -1,0 +1,14 @@
+{
+  "pipeline":[
+    "input.las",
+	  {
+        "type":"filters.crop",
+        "bounds":"([-20,20],[-20,20])"
+    },
+    {
+      "type":"filters.sample",
+      "radius":"0.1"
+    },
+    "placeholder.laz"
+  ]
+}
