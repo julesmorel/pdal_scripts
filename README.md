@@ -1,18 +1,36 @@
-### Requirements
+# Digital terrain reconstruction from LiDAR scans using PDAL 
+
+## Requirements
 * Linux (tested on Ubuntu 20.04.4 LTS and 21.10)
 * PDAL 2.4.2 
+* plyfile (NumPy-based text/binary PLY file reader/writer for Python)
+
+-----------------
+## Install
+```bash
+conda install -c conda-forge pdal plyfile
+```
 
 -----------------
 ## PDAL scripts
-For comparison purposes, we provide 3 PDAL scripts to crop the input las,segment the ground points and then reconstruct the terrain surface.
-To merge every scans of the plot, first use: 
+the script crop the input las,segment the ground points and then reconstruct the terrain surface as an .obj surface:
 ```bash
-pdal merge INPUT_FILE_1 ... INPUT_FILE_N OUTPUT_FILE
+./segment_terrain.sh INPUT_FILE_1 ... INPUT_FILE_N OUTPUT_FILE
 ```
-Then, use the 3 following scripts to reconstruct the terrain surface
+where INPUT_FILE_1 ... INPUT_FILE_N are the .las/.laz files containing the scans of the plot and OUTPUT_FILE is the path to the .obj output surface 
+**Note**: the extent of the ground reconstruction must be adjusted in the header of segment_terrain.sh
+
+-----------------
+## Fixing .las files
+If PDAL output the following error while reading the .las files
 ```bash
-pdal translate INPUT_LAS   CROPPED_LAS --json pdal_scripts/pipeline_crop.json
-pdal translate CROPPED_LAS GROUND_LAS  --json pdal_scripts/pipeline_csf.json
-pdal translate GROUND_LAS  SURFACE_PLY --json pdal_scripts/pipeline_poisson.json
+Global encoding WKT flag not set for point format 6 - 10
 ```
-**Note**: Every files are las/laz, except the surface one which is in the ply format
+It means that the LAS file is missing a Spatial Reference System.
+To fix it, run:
+```bash
+python fixLasFile.py INPUT_FILE
+```
+
+
+

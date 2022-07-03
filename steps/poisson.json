@@ -1,0 +1,15 @@
+{
+	"pipeline":[
+	  	"input.las",
+	  	{
+		"type":"filters.poisson"
+		},
+		{
+			"type":"writers.ply",
+			"dims":"X=float,Y=float,Z=float",
+			"faces":true,
+			"filename":"data/surface.ply"
+		},
+		"placeholder.ply"
+	]
+  }
