@@ -24,8 +24,9 @@ The pipeline is made of the following steps:
 1. Every input las files are cropped on an user defined extent (they are also subsampled to the desired DTM resolution in order to speed up the processing)
 2. The resulting cropped point clouds are merged 
 3. The Cloth Simulation Filter (CSF) classifies the ground points.
-4. A surface model (PLY format) is reconstructed from those ground points
-5. The PLY surface model is converted into an OBJ
+4. The DTM raster is exported
+5. A surface model (PLY format) is reconstructed from the ground points
+6. The PLY surface model is converted into an OBJ
 
 -----------------
 ## Fixing .las files
