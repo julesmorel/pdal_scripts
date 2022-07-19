@@ -30,10 +30,10 @@ if [ "$#" -ge  2 ]; then
   echo "Merging input files"
   pointsMerged=$dir/all.laz
   pdal merge ${listCroppedFiles[@]} $pointsMerged
-  for file in ${listCroppedFiles[@]}
+  for fileCropped in ${listCroppedFiles[@]}
   do
-    rm $file 
-  done 
+    rm $fileCropped
+  done
 
   echo "Estimating ground points"
   groundPoints=$dir/ground.laz
@@ -46,7 +46,7 @@ if [ "$#" -ge  2 ]; then
 
   echo "Reconstructing the surface from ground points"
   surfacePly=$ply_out
-  pdal pipeline $PDAL_FOLDER/poisson.json --writers.ply.filename=$surfacePly --readers.las.filename=$groundPoints
+  pdal pipeline $PDAL_FOLDER/poisson.json --writers.ply.filename=$surfacePly --writers.ply.faces="true" --readers.las.filename=$groundPoints
   rm $groundPoints
 
   python ply2obj.py $ply_out

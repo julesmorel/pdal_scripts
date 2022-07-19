@@ -9,7 +9,6 @@
 			"dims":"X=float,Y=float,Z=float",
 			"faces":true,
 			"filename":"data/surface.ply"
-		},
-		"placeholder.ply"
+		}	
 	]
   }
