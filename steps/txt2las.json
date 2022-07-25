@@ -1,0 +1,10 @@
+[
+    {
+        "type":"readers.text",
+        "filename":"inputfile.txt"
+    },
+    {
+        "type":"writers.las",
+        "filename":"outputfile.las"
+    }
+]
