@@ -10,10 +10,10 @@ Y_MIN=-20
 Y_MAX=20
 
 #Folder PDAL script
-PDAL_FOLDER="steps"
+scriptsroot=$(dirname $0)
+PDAL_FOLDER=$scriptsroot"/steps"
 
 if [ "$#" -ge  2 ]; then
-  scriptsroot=$(dirname $0)
   outputOBJ=${@: -1}
   dir_out=$(dirname "$outputOBJ")
   root_out=$(basename "${outputOBJ%.*}")
@@ -51,7 +51,7 @@ if [ "$#" -ge  2 ]; then
   pdal pipeline $PDAL_FOLDER/poisson.json --writers.ply.filename=$surfacePly --writers.ply.faces="true" --readers.las.filename=$groundPoints
   rm $groundPoints
 
-  python ply2obj.py $ply_out
+  python $scriptsroot/ply2obj.py $ply_out
   rm $surfacePly
 
 else
