@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #Resolution of the DTM
 RESOLUTION_XYZ=0.1
 
