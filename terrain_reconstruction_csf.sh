@@ -24,7 +24,7 @@ if [ "$#" -ge  2 ]; then
     root=$(basename "${file%.*}")
     croppedFile=$dir/${root}cropped.laz
     pdal pipeline $PDAL_FOLDER/crop.json --writers.las.filename=$croppedFile --readers.las.filename=$file --filters.crop.bounds="([$X_MIN,$X_MAX],[$Y_MIN,$Y_MAX])" --filters.sample.radius="$RESOLUTION_XYZ"
-    listCroppedFiles+=("$croppedFile")
+    listCroppedFiles+=( $croppedFile )
   done
 
   echo "Merging input files"
