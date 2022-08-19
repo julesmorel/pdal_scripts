@@ -44,7 +44,7 @@ The pipeline is made of the following steps:
 
 -----------------
 ## Fixing .las files
-If PDAL output the following error while reading the .las files
+If PDAL outputs the following error while reading the .las files
 ```bash
 Global encoding WKT flag not set for point format 6 - 10
 ```
