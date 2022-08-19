@@ -18,7 +18,7 @@ The script crop the input las, segment the ground points and then reconstruct th
 ./terrain_reconstruction_csf.sh INPUT_FILE_1 ... INPUT_FILE_N OUTPUT_FILE
 ```
 where INPUT_FILE_1 ... INPUT_FILE_N are the .las/.laz files containing the scans of the plot and OUTPUT_FILE is the path to the .obj output surface 
-**Note**: the extent of the ground reconstruction must be adjusted in the header of segment_terrain.sh
+**Note**: the extent of the ground reconstruction and the parameters of the CSF algorithm must be adjusted in the header of terrain_reconstruction_csf.sh
 
 The pipeline is made of the following steps:
 1. Every input las files are cropped on an user defined extent (they are also subsampled to the desired DTM resolution in order to speed up the processing)
