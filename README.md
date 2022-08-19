@@ -30,7 +30,7 @@ The pipeline is made of the following steps:
 
 Additionnaly, we propose a second script, designed to reconstruct a terrain surface from Ground points already segmented. 
 ```bash
-./terrain_reconstruction_csf.sh INPUT_FILE_ASCII INPUT_FILE_OFFSET OUTPUT_FILE
+./terrain_reconstruction_from_ground_points.sh INPUT_FILE_ASCII INPUT_FILE_OFFSET OUTPUT_FILE
 ```
 INPUT_FILE_ASCII is a point cloud stored in ASCII format where the first 3 columns are XYZ coordiantes separated by space characters.
 INPUT_FILE_OFFSET is an ASCII file storing the X and Y values of the offset applied to the point cloud

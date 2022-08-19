@@ -9,6 +9,10 @@ X_MAX=20
 Y_MIN=-20
 Y_MAX=20
 
+#CSF Parameters
+CSF_RESOLUTION=0.25
+CSF_RIGIDNESS=10
+
 #Folder PDAL script
 scriptsroot=$(dirname $0)
 PDAL_FOLDER=$scriptsroot"/steps"
@@ -39,7 +43,7 @@ if [ "$#" -ge  2 ]; then
 
   echo "Estimating ground points"
   groundPoints=$dir/ground.laz
-  pdal pipeline $PDAL_FOLDER/csf.json --writers.las.filename=$groundPoints --readers.las.filename=$pointsMerged
+  pdal pipeline $PDAL_FOLDER/csf.json --writers.las.filename=$groundPoints --readers.las.filename=$pointsMerged --filters.csf.resolution=$CSF_RESOLUTION --filters.csf.rigidness=$CSF_RIGIDNESS 
   rm $pointsMerged
 
   echo "Exporting the DTM as GDAL raster"

@@ -7,9 +7,9 @@
     },
     {
       "type":"filters.csf",
-	  "resolution":0.1,
+	  "resolution":0.25,
       "smooth":true,
-      "rigidness":3,
+      "rigidness":10,
 	  "threshold":0.01
     },
     {
