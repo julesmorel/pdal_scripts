@@ -1,0 +1,22 @@
+{
+    "pipeline": [
+        "input.laz",
+        {
+            "type": "filters.assign",
+            "assignment": "Classification[:]=0"
+        },
+        {
+            "type": "filters.smrf"
+        },
+        {
+            "type": "filters.hag"
+        },
+        {
+            "type": "filters.range",
+            "limits": "HeightAboveGround[2:]"
+        },
+        {
+            "filename":"above-ground.laz"
+        }
+    ]
+}

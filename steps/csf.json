@@ -2,15 +2,22 @@
   "pipeline":[
     "input.las",
     {
+      "type": "filters.assign",
+      "value": [
+        "ReturnNumber = 1 WHERE ReturnNumber < 1",
+        "NumberOfReturns = 1 WHERE NumberOfReturns < 1"
+      ]
+    },
+    {
       "type":"filters.assign",
       "assignment":"Classification[:]=0"
     },
     {
       "type":"filters.csf",
-	  "resolution":0.25,
+	  "resolution":0.5,
       "smooth":true,
       "rigidness":10,
-	  "threshold":0.01
+	  "threshold":0.02
     },
     {
       "type":"filters.range",

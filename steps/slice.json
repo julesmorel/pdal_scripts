@@ -1,0 +1,11 @@
+{
+    "pipeline":[
+      "../Mirukuru/sampleSub001_sor_eig_vol.laz.las",
+      {
+        "type":"filters.dem",
+        "raster":"../Mirukuru/dtm_smooth.tif",
+        "limits":"Z[-5:6.]"
+    },
+    "../Mirukuru/slice550.laz"
+    ]
+  }

@@ -1,0 +1,26 @@
+{
+    "pipeline":[
+        "input.las",
+        {
+            "type":"filters.hag_dem",
+            "raster": "dtm_smooth.tif"
+        },
+/*         {
+            "type":"filters.sort",
+            "dimension":"HeightAboveGround",
+            "order":"DESC"
+        }, */
+        {
+             "type":"filters.litree",
+             "min_points":5000,
+             "min_height":10.0,
+             "radius":10.0
+        }, 
+        {
+            "type":"writers.las",
+            "filename":"output.laz",
+            "minor_version":1.4,
+            "extra_dims":"all"
+        }
+    ]
+  }
